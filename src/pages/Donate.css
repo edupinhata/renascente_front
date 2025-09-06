@@ -1,0 +1,42 @@
+.donate {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(63,81,181,0.04);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+.donate-img-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.donate-img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(63,81,181,0.08);
+}
+
+.donate-text {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.donate-info h2 {
+  color: #3f51b5;
+  margin-bottom: 0.5rem;
+}
+
+.donate-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.donate-info li {
+  font-size: 1.05rem;
+  margin-bottom: 0..5rem;
+}

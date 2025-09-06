@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <path d="M40 85 C20 65 20 40 40 20 C60 40 60 65 40 85 Z" fill="white"/>
+  <path d="M50 80 C30 60 30 35 50 15 C70 35 70 60 50 80 Z" fill="white" opacity="0.6"/>
+  <text x="90" y="45" fill="white" font-size="24" font-family="Arial" dominant-baseline="middle">Igreja Cristã</text>
+  <text x="90" y="75" fill="white" font-size="24" font-family="Arial" dominant-baseline="middle">Renascente</text>
+</svg>
