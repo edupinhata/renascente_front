@@ -7,6 +7,7 @@ import Cultos from './pages/Cultos'
 import Donate from './pages/Donate'
 import logo from './assets/logo.svg' // ajuste o caminho se necessário
 
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [page, setPage] = useState('home')
