@@ -28,7 +28,7 @@ function App() {
     }
   }
 
-  const navigate = (p) => {
+  const navigate = (p: string) => {
     setPage(p)
     setMenuOpen(false)
   }
