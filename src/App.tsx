@@ -1,40 +1,66 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
-
-const client = generateClient<Schema>();
+import { useState } from 'react'
+import './App.css'
+import Home from './pages/Home'
+import About from './pages/About'
+import Agenda from './pages/Agenda'
+import Cultos from './pages/Cultos'
+import Donate from './pages/Donate'
+import logo from './assets/logo.svg' // ajuste o caminho se necessário
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [page, setPage] = useState('home')
 
-  useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }, []);
+  const renderPage = () => {
+    switch (page) {
+      case 'home':
+        return <Home />
+      case 'about':
+        return <About />
+      case 'agenda':
+        return <Agenda />
+      case 'cultos':
+        return <Cultos />
+      case 'donate':
+        return <Donate />
+      default:
+        return <Home />
+    }
+  }
 
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
+  const navigate = (p) => {
+    setPage(p)
+    setMenuOpen(false)
   }
 
   return (
-    <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
-      </div>
-    </main>
-  );
+    <>
+      <header className="header">
+        <div className="brand" onClick={() => navigate('home')}>
+            <img src={logo} alt="Logo da igreja" className="brand-logo" />
+        </div>
+        <nav className="nav-dropdown">
+          <button
+            className="dropdown-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Abrir menu"
+          >
+            ☰
+          </button>
+          <ul className={`dropdown-menu${menuOpen ? ' open' : ''}`}>
+            <li className={page === 'home' ? 'active' : ''} onClick={() => navigate('home')}>Página inicial</li>
+            <li className={page === 'about' ? 'active' : ''} onClick={() => navigate('about')}>Quem somos</li>
+            <li className={page === 'agenda' ? 'active' : ''} onClick={() => navigate('agenda')}>Agenda</li>
+            <li className={page === 'cultos' ? 'active' : ''} onClick={() => navigate('cultos')}>Cultos</li>
+            <li className={page === 'donate' ? 'active' : ''} onClick={() => navigate('donate')}>Oferte</li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        {renderPage()}
+      </main>
+    </>
+  )
 }
 
-export default App;
+export default App
